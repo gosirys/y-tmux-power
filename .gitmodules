@@ -1,0 +1,3 @@
+[submodule "tmux-lpvpns"]
+	path = tmux-lpvpns
+	url = git@github.com:gosirys/tmux-lpvpns.git
