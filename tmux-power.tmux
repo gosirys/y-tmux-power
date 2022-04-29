@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 #===============================================================================
+#  Forked version by Osirys to support tmux-lpvpns
+#===============================================================================
 #   Author: Wenxuan
 #    Email: wenxuangm@gmail.com
 #  Created: 2018-04-05 17:37
 #===============================================================================
+
+SDIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
 
 # $1: option
 # $2: default value
@@ -33,6 +38,10 @@ show_web_reachable="$(tmux_get @tmux_power_show_web_reachable false)"
 prefix_highlight_pos=$(tmux_get @tmux_power_prefix_highlight_pos)
 time_format=$(tmux_get @tmux_power_time_format '%T')
 date_format=$(tmux_get @tmux_power_date_format '%F')
+
+show_hackon="$(tmux_get @tmux_power_show_hackon true)"
+show_lpvpns_bar="$(tmux_get @tmux_power_show_lpvpns true)"
+
 # short for Theme-Colour
 TC=$(tmux_get '@tmux_power_theme' 'gold')
 case $TC in
@@ -104,12 +113,33 @@ tmux_set status-left-bg "$G04"
 tmux_set status-left-fg "G12"
 tmux_set status-left-length 150
 user=$(whoami)
-LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$right_arrow_icon#[fg=$TC,bg=$G06] $session_icon #S "
+
+LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$right_arrow_icon#[fg=$TC,bg=$G06] $session_icon #S $LS#[fg=$G06,bg=$G05]${right_arrow_icon}"
+
+
+if [[ "$show_hackon" && "$show_lpvpns_bar" ]]; then
+
+    LS="$LS#[fg=$TC,bg=$G05]#{target_sel}#[fg=$G05,bg=$G04]$right_arrow_icon#[fg=$TC,bg=$G04]#{lpvpns_bar}"
+
+else
+
+    if [[ "$show_hackon" ]]; then
+        LS="$LS#[fg=$TC,bg=$G05]#{target_sel}"
+
+    else
+        LS="$LS#[fg=$TC,bg=$G05]#{lpvpns_bar}"
+
+    fi
+
+fi
+
+
 if "$show_upload_speed"; then
-    LS="$LS#[fg=$G06,bg=$G05]$right_arrow_icon#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$BG]$right_arrow_icon"
+    LS="$LS#[fg=$G04,bg=$G03]$right_arrow_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G03,bg=$BG]$right_arrow_icon"
 else
     LS="$LS#[fg=$G06,bg=$BG]$right_arrow_icon"
 fi
+
 if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
     LS="$LS#{prefix_highlight}"
 fi
