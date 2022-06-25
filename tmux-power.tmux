@@ -137,7 +137,7 @@ c_session=$(tmux display-message -p '#S')
 if [[ "$show_hackon" ]]; then
 
     tf=$(tmux show-environment -g | grep -oP '(?<=current_target_file=)([^\s]+)')
-    selected_target="$(cat "$current_target_file")"
+    selected_target="$(cat "$tf")"
 
     if [[ -n "${selected_target}" ]]; then
 
