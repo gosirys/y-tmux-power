@@ -179,6 +179,9 @@ ls_sep_3="#[fg=$G05,bg=$G04]${right_arrow_icon}"
 color_for_segment_2="#[fg=$TC,bg=$G05]"
 color_for_segment_3="#[fg=$TC,bg=$G04]"
 
+echo -e "dynamic_state: $dynamic_state" >> "$HOME/.tmux_power_debug"
+
+
 if [[ $dynamic_state == 0 ]]; then
     # session_name + current_target + lp status bar
     LS="${LS}#[fg=$TC,bg=$G06] $session_icon #S ${ls_sep_2}${color_for_segment_2}#{target_sel}${ls_sep_3}${color_for_segment_3}#{lpvpns_bar}"
