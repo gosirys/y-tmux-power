@@ -169,7 +169,7 @@ fi
 
 LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]${right_arrow_icon}"
 ls_def_sess_name="#[fg=$TC,bg=$G06] $session_icon #S "
-ls_combined_sess_name="#[fg=$TC,bg=$G06]#{combined_hackon}"
+ls_combined_sess_name="#[fg=$TC,bg=$G06]#{target_sel}"
 ls_curr_target="#{target_sel}"
 ls_lpvpns_bar="#{lpvpns_bar}"
 
