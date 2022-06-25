@@ -2,7 +2,8 @@
 #===============================================================================
 #  Forked version by Osirys to support tmux-lpvpns
 #===============================================================================
-#   Author: Wenxuan
+#  -- ORIGINAL --
+#  Author: Wenxuan
 #    Email: wenxuangm@gmail.com
 #  Created: 2018-04-05 17:37
 #===============================================================================
@@ -72,6 +73,9 @@ case $TC in
     'default' ) # Useful when your term changes colour dynamically (e.g. pywal)
         TC='colour3'
         ;;
+    'custom' ) # Useful when your term changes colour dynamically (e.g. pywal)
+        TC=$(tmux_get '@tmux_power_theme_custom' 'colour3')
+        ;;
 esac
 
 G01=#080808 #232
@@ -113,25 +117,91 @@ tmux_set status-left-bg "$G04"
 tmux_set status-left-fg "G12"
 tmux_set status-left-length 150
 user=$(whoami)
+c_session=$(tmux display-message -p '#S')
 
-LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$right_arrow_icon#[fg=$TC,bg=$G06] $session_icon #S $LS#[fg=$G06,bg=$G05]${right_arrow_icon}"
+# states:
+#     current_target != session_name
+#     0: session_name + current_target + lp status bar
+#     1: session_name + current_target
 
+#     current_target == session_name
 
-if [[ "$show_hackon" && "$show_lpvpns_bar" ]]; then
+#     2: combined[session + target] + lp status bar
+#     3: combined[session + target]
 
-    LS="$LS#[fg=$TC,bg=$G05]#{target_sel}#[fg=$G05,bg=$G04]$right_arrow_icon#[fg=$TC,bg=$G04]#{lpvpns_bar}"
+#     hackon off or hackon on but no target selected
+#     4: session_name + lp status bar
 
-else
+#     5: nothing
 
-    if [[ "$show_hackon" ]]; then
-        LS="$LS#[fg=$TC,bg=$G05]#{target_sel}"
+if [[ "$show_hackon" ]]; then
 
+    tf=$(tmux show-environment -g | grep -oP '(?<=current_target_file=)([^\s]+)')
+    selected_target="$(cat "$current_target_file")"
+
+    if [[ -n "${selected_target}" ]]; then
+
+        if [[ "$selected_target" != "$c_session" ]]; then
+            dynamic_state=1
+            if [[ "$show_lpvpns_bar" ]]; then
+                dynamic_state=0
+            fi
+        else
+            dynamic_state=3
+            if [[ "$show_lpvpns_bar" ]]; then
+                dynamic_state=2
+            fi
+        fi
     else
-        LS="$LS#[fg=$TC,bg=$G05]#{lpvpns_bar}"
-
+        dynamic_state=5
+        if [[ "$show_lpvpns_bar" ]]; then
+           dynamic_state=4
+        fi
     fi
-
+else
+    dynamic_state=5
+    if [[ "$show_lpvpns_bar" ]]; then
+        dynamic_state=4
+    fi
 fi
+
+
+
+LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]${right_arrow_icon}"
+ls_def_sess_name="#[fg=$TC,bg=$G06] $session_icon #S $LS"
+ls_combined_sess_name="#[fg=$TC,bg=$G06]#{combined_hackon}"
+ls_curr_target="#{target_sel}"
+ls_lpvpns_bar="#{lpvpns_bar}"
+
+ls_sep_2="#[fg=$G06,bg=$G05]${right_arrow_icon}"
+ls_sep_3="#[fg=$G05,bg=$G04]${right_arrow_icon}"
+
+color_for_segment_2="#[fg=$TC,bg=$G05]"
+color_for_segment_3="#[fg=$TC,bg=$G04]"
+
+if [[ $dynamic_state == 0 ]]; then
+    # session_name + current_target + lp status bar
+    LS="${LS}${ls_def_sess_name}${ls_sep_2}${color_for_segment_2}${ls_curr_target}${ls_sep_3}${color_for_segment_3}${ls_lpvpns_bar}"
+
+elif [[ $dynamic_state == 1 ]]; then
+    # session_name + current_target
+    LS="${LS}${ls_def_sess_name}${ls_sep_2}${color_for_segment_2}${ls_curr_target}"
+
+elif [[ $dynamic_state == 2 ]]; then
+    # combined[session + target] + lp status bar
+    LS="${LS}${ls_combined_sess_name}${ls_sep_2}${color_for_segment_2}${ls_lpvpns_bar}"
+
+elif [[ $dynamic_state == 3 ]]; then
+    # combined[session + target]
+    LS="${LS}${ls_combined_sess_name}"
+
+elif [[ $dynamic_state == 4 ]]; then
+    # session_name + lp status bar
+    LS="${LS}${ls_def_sess_name}${ls_sep_2}${color_for_segment_2}${ls_lpvpns_bar}"
+fi
+
+
+
 
 
 if "$show_upload_speed"; then
