@@ -181,11 +181,11 @@ color_for_segment_3="#[fg=$TC,bg=$G04]"
 
 if [[ $dynamic_state == 0 ]]; then
     # session_name + current_target + lp status bar
-    LS="${LS}${ls_def_sess_name}${ls_sep_2}${color_for_segment_2}#{target_sel}${ls_sep_3}${color_for_segment_3}#{lpvpns_bar}"
+    LS="${LS}#[fg=$TC,bg=$G06] $session_icon #S ${ls_sep_2}${color_for_segment_2}#{target_sel}${ls_sep_3}${color_for_segment_3}#{lpvpns_bar}"
 
 elif [[ $dynamic_state == 1 ]]; then
     # session_name + current_target
-    LS="${LS}${ls_def_sess_name}${ls_sep_2}${color_for_segment_2}#{target_sel}"
+    LS="${LS}#[fg=$TC,bg=$G06] $session_icon #S ${ls_sep_2}${color_for_segment_2}#{target_sel}"
 
 elif [[ $dynamic_state == 2 ]]; then
     # combined[session + target] + lp status bar
@@ -197,7 +197,7 @@ elif [[ $dynamic_state == 3 ]]; then
 
 elif [[ $dynamic_state == 4 ]]; then
     # session_name + lp status bar
-    LS="${LS}${ls_def_sess_name}${ls_sep_2}${color_for_segment_2}#{lpvpns_bar}"
+    LS="${LS}#[fg=$TC,bg=$G06] $session_icon #S ${ls_sep_2}${color_for_segment_2}#{lpvpns_bar}"
 fi
 
 
