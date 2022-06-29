@@ -248,10 +248,10 @@ tmux_set status-justify centre
 tmux_set window-status-current-statys "fg=$TC,bg=$BG"
 
 # Pane border
-tmux_set pane-border-style "fg=$G07"
+tmux_set pane-border-style fg=yellow,bg=cyan
 
 # Active pane border
-tmux_set pane-active-border-style "fg=$G13"
+tmux_set pane-active-border-style fg=green,bg=magenta
 
 # Pane number indicator
 tmux_set display-panes-colour "$G07"
