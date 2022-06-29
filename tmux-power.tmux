@@ -248,10 +248,13 @@ tmux_set status-justify centre
 tmux_set window-status-current-statys "fg=$TC,bg=$BG"
 
 # Pane border
-tmux_set pane-border-style fg=yellow,bg=cyan
+#tmux_set pane-border-style fg=yellow,bg=cyan
+tmux set -g pane-border-style "fg=#afdab6"
+
 
 # Active pane border
-tmux_set pane-active-border-style fg=green,bg=magenta
+#tmux_set pane-active-border-style fg=green,bg=magenta
+tmux set -g pane-active-border-style "bg=#afdab6,fg=#afdab6"
 
 # Pane number indicator
 tmux_set display-panes-colour "$G07"
@@ -271,4 +274,8 @@ tmux_set message-command-style "fg=$TC,bg=$BG"
 tmux_set mode-style "bg=$TC,fg=$FG"
 
 # set -g pane-active-border-style "bg=default,fg=#fefcfc"
+# set -g pane-border-style "fg=#afdab6"
+# tmux set -g pane-active-border-style fg=yellow,bg=cyan
+# tmux set -g pane-border-style fg=green,bg=magenta
+# set -g pane-active-border-style "bg=#afdab6,fg=#afdab6"
 # set -g pane-border-style "fg=#afdab6"
