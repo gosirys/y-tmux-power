@@ -90,6 +90,8 @@ G09=#585858 #240
 G10=#626262 #241
 G11=#6c6c6c #242
 G12=#767676 #243
+G13=#fefcfc
+
 
 FG="$G10"
 BG="$G04"
@@ -168,10 +170,8 @@ fi
 
 
 LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]${right_arrow_icon}"
-ls_def_sess_name="#[fg=$TC,bg=$G06] $session_icon #S "
-ls_combined_sess_name="#[fg=$TC,bg=$G06]#{target_sel}"
-ls_curr_target="#{target_sel}"
-ls_lpvpns_bar="#{lpvpns_bar}"
+
+
 
 ls_sep_2="#[fg=$G06,bg=$G05]${right_arrow_icon}"
 ls_sep_3="#[fg=$G05,bg=$G04]${right_arrow_icon}"
@@ -179,7 +179,7 @@ ls_sep_3="#[fg=$G05,bg=$G04]${right_arrow_icon}"
 color_for_segment_2="#[fg=$TC,bg=$G05]"
 color_for_segment_3="#[fg=$TC,bg=$G04]"
 
-echo -e "dynamic_state: $dynamic_state" >> "$HOME/.tmux_power_debug"
+# echo -e "dynamic_state: $dynamic_state" >> "$HOME/.tmux_power_debug"
 
 
 if [[ $dynamic_state == 0 ]]; then
@@ -208,7 +208,7 @@ fi
 
 
 if "$show_upload_speed"; then
-    LS="$LS#[fg=$G04,bg=$G03]$right_arrow_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G03,bg=$BG]$right_arrow_icon"
+    LS="$LS#[fg=$G05,bg=$G04]$right_arrow_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G04,bg=$BG]$right_arrow_icon"
 else
     LS="$LS#[fg=$G06,bg=$BG]$right_arrow_icon"
 fi
@@ -251,7 +251,7 @@ tmux_set window-status-current-statys "fg=$TC,bg=$BG"
 tmux_set pane-border-style "fg=$G07,bg=default"
 
 # Active pane border
-tmux_set pane-active-border-style "fg=$TC,bg=$BG"
+tmux_set pane-active-border-style "fg=$G13"
 
 # Pane number indicator
 tmux_set display-panes-colour "$G07"
@@ -269,3 +269,6 @@ tmux_set message-command-style "fg=$TC,bg=$BG"
 
 # Copy mode highlight
 tmux_set mode-style "bg=$TC,fg=$FG"
+
+# set -g pane-active-border-style "bg=default,fg=#fefcfc"
+# set -g pane-border-style "fg=#afdab6"
