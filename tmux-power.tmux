@@ -245,7 +245,7 @@ tmux_set window-status-separator ""
 tmux_set status-justify centre
 
 # Current window status
-tmux_set window-status-current-status "fg=$BG,bg=$TC"
+tmux_set window-status-current-status "fg=magenta,bg=yellow"
 
 # Pane border
 tmux_set pane-border-style "fg=$TC"
