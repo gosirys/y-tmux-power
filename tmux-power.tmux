@@ -208,7 +208,7 @@ fi
 
 
 if "$show_upload_speed"; then
-    LS="$LS#[fg=$G05,bg=$G04]$right_arrow_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G04,bg=$BG]$right_arrow_icon"
+    LS="$LS#[fg=$G04,bg=$G03]$right_arrow_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G03,bg=$BG]$right_arrow_icon"
 else
     LS="$LS#[fg=$G06,bg=$BG]$right_arrow_icon"
 fi
@@ -236,7 +236,7 @@ tmux_set status-right "$RS"
 
 # Window status
 tmux_set window-status-format " #I:#W#F "
-tmux_set window-status-current-format "#[fg=$G06,bg=$TC]$right_arrow_icon#[fg=$G06,bg=$TC,bold] #I:#W#F #[fg=$G06,bg=$TC,nobold]$right_arrow_icon"
+tmux_set window-status-current-format "#[fg=$G06,bg=$TC]$right_arrow_icon#[fg=$G06,bg=$TC,bold] #I:#W#F #[fg=$TC,bg=$G06,nobold]$right_arrow_icon"
 
 # Window separator
 tmux_set window-status-separator ""
