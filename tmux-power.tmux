@@ -169,7 +169,7 @@ fi
 
 
 
-LS="#[fg=$TC,bg=,bold] $user@#h #[fg=,bg=$G06,nobold]${right_arrow_icon}"
+LS="#[default] $user@#h #[fg=,bg=$G06,nobold]${right_arrow_icon}"
 
 
 
