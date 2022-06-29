@@ -173,11 +173,11 @@ LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]${right_a
 
 
 
-ls_sep_2="#[fg=$G06,bg=$G05]${right_arrow_icon}"
-ls_sep_3="#[fg=$G05,bg=$G04]${right_arrow_icon}"
+ls_sep_2="#[fg=$G06,bg=$TC]${right_arrow_icon}"
+ls_sep_3="#[fg=$TC,bg=$G04]${right_arrow_icon}"
 
-color_for_segment_2="#[fg=$TC,bg=$G05]"
-color_for_segment_3="#[fg=$TC,bg=$G04]"
+color_for_segment_2="#[fg=$G04,bg=$TC]"
+color_for_segment_3="#[fg=$G05,bg=$TC]"
 
 # echo -e "dynamic_state: $dynamic_state" >> "$HOME/.tmux_power_debug"
 
@@ -218,6 +218,9 @@ if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
 fi
 tmux_set status-left "$LS"
 
+
+
+
 # Right side of status bar
 tmux_set status-right-bg "$G04"
 tmux_set status-right-fg "$G12"
@@ -227,7 +230,7 @@ if "$show_download_speed"; then
     RS="#[fg=$G05,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} #[fg=$G06,bg=$G05]$left_arrow_icon$RS"
 fi
 if "$show_upload_speed"; then
-    RS="#[fg=$G06,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G06] $upload_speed_icon #{upload_speed} #[fg=$BG,bg=$G06]$left_arrow_icon$RS"
+    RS="#[fg=$G06,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G06] $upload_speed_icon #{upload_speed} #[fg=$G06,bg=$G06]$left_arrow_icon$RS"
 # else
 #     RS="$RS#[fg=$G06,bg=$BG]$right_arrow_icon"
 fi
