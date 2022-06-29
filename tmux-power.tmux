@@ -116,7 +116,7 @@ tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$BG]$right_arrow_icon"
 #     
 # Left side of status bar
 tmux_set status-left-bg "$G04"
-tmux_set status-left-fg "G12"
+tmux_set status-left-fg "$G12"
 tmux_set status-left-length 150
 user=$(whoami)
 c_session=$(tmux display-message -p '#S')
@@ -220,7 +220,7 @@ tmux_set status-left "$LS"
 
 # Right side of status bar
 tmux_set status-right-bg "$G04"
-tmux_set status-right-fg "G12"
+tmux_set status-right-fg "$G12"
 tmux_set status-right-length 150
 RS="#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$left_arrow_icon#[fg=$G04,bg=$TC] $date_icon $date_format "
 if "$show_download_speed"; then
@@ -236,7 +236,7 @@ tmux_set status-right "$RS"
 
 # Window status
 tmux_set window-status-format " #I:#W#F "
-tmux_set window-status-current-format "#[fg=$G06,bg=$TC]$right_arrow_icon#[fg=$G06,bg=$TC,bold] #I:#W#F #[fg=$TC,bg=$G06,nobold]$right_arrow_icon"
+tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$right_arrow_icon#[fg=$BG,bg=$TC,bold] #I:#W#F #[fg=$TC,bg=$BG,nobold]$right_arrow_icon"
 
 # Window separator
 tmux_set window-status-separator ""
@@ -244,8 +244,8 @@ tmux_set window-status-separator ""
 # Window status alignment
 tmux_set status-justify centre
 
-# Current window status
-tmux_set window-status-current-status "fg=magenta,bg=yellow"
+# # Current window status
+# tmux_set window-status-current-status "fg=magenta,bg=yellow"
 
 # Pane border
 tmux_set pane-border-style "fg=$TC"
