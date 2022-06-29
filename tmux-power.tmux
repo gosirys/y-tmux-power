@@ -96,7 +96,7 @@ G13=#fefcfc
 
 
 FG="$G10"
-BG="#b70100"
+BG="#95AAA0"
 
 # Status options
 tmux_set status-interval 1
