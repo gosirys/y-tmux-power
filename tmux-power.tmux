@@ -174,7 +174,7 @@ LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]${right_a
 
 
 ls_sep_2="#[fg=$G06,bg=$TC]${right_arrow_icon}"
-ls_sep_3="#[fg=$TC,bg=$G04]${right_arrow_icon}"
+ls_sep_3="#[fg=$TC,bg=$TC]${right_arrow_icon}"
 
 color_for_segment_2="#[fg=$G04,bg=$TC]"
 color_for_segment_3="#[fg=$G05,bg=$TC]"
@@ -210,7 +210,7 @@ fi
 # if "$show_upload_speed"; then
 #     LS="$LS#[fg=$G04,bg=$G03]$right_arrow_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G03,bg=$BG]$right_arrow_icon"
 # else
-    LS="$LS#[fg=$G04,bg=$G03]$right_arrow_icon"
+    LS="$LS#[fg=$TC,bg=$G03]$right_arrow_icon"
 # 
 
 if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
