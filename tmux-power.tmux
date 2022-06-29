@@ -93,10 +93,8 @@ G12=#767676 #243
 G13=#fefcfc
 
 
-
-
 FG="$G10"
-BG="#697675"
+BG="$G04"
 
 # Status options
 tmux_set status-interval 1
@@ -171,7 +169,7 @@ fi
 
 
 
-LS="#[fg=$TC,bg=default,bold] $user@#h #[fg=$TC,bg=$G06,nobold]${right_arrow_icon}"
+LS="#[fg=$TC,bg=$G07,bold] $user@#h #[fg=$TC,bg=$G06,nobold]${right_arrow_icon}"
 
 
 
