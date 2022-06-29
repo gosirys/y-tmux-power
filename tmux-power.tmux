@@ -236,7 +236,7 @@ tmux_set status-right "$RS"
 
 # Window status
 tmux_set window-status-format " #I:#W#F "
-tmux_set window-status-current-format "#[fg=$BG,bg=$G06]$right_arrow_icon#[fg=$TC,bold] #I:#W#F #[fg=$G06,bg=$BG,nobold]$right_arrow_icon"
+tmux_set window-status-current-format "#[fg=$TC,bg=$G06]$right_arrow_icon#[fg=$G06,bg=$TC,bold] #I:#W#F #[fg=$G06,bg=$TC,nobold]$right_arrow_icon"
 
 # Window separator
 tmux_set window-status-separator ""
@@ -245,16 +245,16 @@ tmux_set window-status-separator ""
 tmux_set status-justify centre
 
 # Current window status
-tmux_set window-status-current-statys "fg=$TC,bg=$BG"
+tmux_set window-status-current-status "fg=$BG,bg=$TC"
 
 # Pane border
-#tmux_set pane-border-style fg=yellow,bg=cyan
-tmux set -g pane-border-style "fg=#afdab6"
-
+tmux_set pane-border-style "fg=$TC"
+#tmux set -g pane-border-style "fg=#afdab6"
+#tmux set -g pane-active-border-style "bg=#afdab6,fg=#afdab6"
 
 # Active pane border
-#tmux_set pane-active-border-style fg=green,bg=magenta
-tmux set -g pane-active-border-style "bg=#afdab6,fg=#afdab6"
+tmux_set pane-active-border-style "fg=$TC,bg=$TC"
+#tmux set -g pane-active-border-style "bg=#afdab6,fg=#afdab6"
 
 # Pane number indicator
 tmux_set display-panes-colour "$G07"
