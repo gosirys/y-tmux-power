@@ -210,7 +210,7 @@ fi
 # if "$show_upload_speed"; then
 #     LS="$LS#[fg=$G04,bg=$G03]$right_arrow_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G03,bg=$BG]$right_arrow_icon"
 # else
-    LS="$LS#[fg=$G06,bg=$BG]$right_arrow_icon"
+    LS="$LS#[fg=$G04,bg=$G03]$right_arrow_icon"
 # 
 
 if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
@@ -227,7 +227,7 @@ if "$show_download_speed"; then
     RS="#[fg=$G05,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} #[fg=$G06,bg=$G05]$left_arrow_icon$RS"
 fi
 if "$show_upload_speed"; then
-    RS="#[fg=$G06,bg=$G05]$left_arrow_icon#[fg=$TC,bg=$G06] $upload_speed_icon #{upload_speed} #[fg=$BG,bg=$G06]$left_arrow_icon$RS"
+    RS="#[fg=$G06,bg=$BG]$left_arrow_icon#[fg=$TC,bg=$G06] $upload_speed_icon #{upload_speed} #[fg=$BG,bg=$G06]$left_arrow_icon$RS"
 # else
 #     RS="$RS#[fg=$G06,bg=$BG]$right_arrow_icon"
 fi
