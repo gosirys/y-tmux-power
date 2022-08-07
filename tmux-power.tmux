@@ -28,6 +28,8 @@ tmux_set() {
 
 r_sep_icon=''
 l_sep_icon=''
+right_arrow_icon=$(tmux_get '@tmux_power_right_arrow_icon' '')
+left_arrow_icon=$(tmux_get '@tmux_power_left_arrow_icon' '')
 
 
 upload_speed_icon=$(tmux_get '@tmux_power_upload_speed_icon' '')
@@ -247,22 +249,22 @@ tmux_set status-right-length 150
 
 
 if "$show_date"; then
-    RS="#[fg=$TC,bg=$G05] $date_icon $date_format #[fg=$G06,bg=$G05]$l_sep_icon$RS"
+    RS=" $date_icon $date_format $l_sep_icon$RS"
 
 fi
 
 if "$show_time"; then
-    RS="#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$G05,bg=$G06]$l_sep_icon$RS"
+    RS=" $time_icon $time_format $l_sep_icon$RS"
 
 fi
 
 
 if "$show_download_speed"; then
-    RS="$l_sep_icon $download_speed_icon #{download_speed} $l_sep_icon$RS"
+    RS="$download_speed_icon #{download_speed} $l_sep_icon$RS"
 fi
 
 if "$show_upload_speed"; then
-    RS="$l_sep_icon $upload_speed_icon #{upload_speed} $l_sep_icon$RS"
+    RS="$upload_speed_icon #{upload_speed} $l_sep_icon$RS"
 
 fi
 
@@ -275,7 +277,7 @@ tmux_set status-right "$RS"
 
 # Window status
 tmux_set window-status-format " #I:#W#F "
-tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$r_sep_icon#[fg=$BG,bg=$TC,bold] #I:#W#F #[fg=$TC,bg=$BG,nobold]$r_sep_icon"
+tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$right_arrow_icon#[fg=$BG,bg=$TC,bold] #I:#W#F #[fg=$TC,bg=$BG,nobold]$right_arrow_icon"
 
 # Window separator
 tmux_set window-status-separator ""
