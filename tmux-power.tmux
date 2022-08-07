@@ -249,22 +249,22 @@ tmux_set status-right-length 150
 
 
 if "$show_date"; then
-    RS=" $date_icon $date_format $l_sep_icon$RS"
+    RS=" $date_icon $date_format $l_sep_icon $RS"
 
 fi
 
 if "$show_time"; then
-    RS=" $time_icon $time_format $l_sep_icon$RS"
+    RS=" $time_icon $time_format $l_sep_icon $RS"
 
 fi
 
 
 if "$show_download_speed"; then
-    RS="$download_speed_icon #{download_speed} $l_sep_icon$RS"
+    RS=" $download_speed_icon #{download_speed} $l_sep_icon $RS"
 fi
 
 if "$show_upload_speed"; then
-    RS="$upload_speed_icon #{upload_speed} $l_sep_icon$RS"
+    RS=" $upload_speed_icon #{upload_speed} $l_sep_icon $RS"
 
 fi
 
