@@ -233,9 +233,9 @@ fi
     LS="$LS#[fg=$TC,bg=$G03]$r_sep_icon"
 # 
 
-if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
-    LS="$LS#{prefix_highlight}"
-fi
+# if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
+#     LS="$LS#{prefix_highlight}"
+# fi
 tmux_set status-left "$LS"
 
 
