@@ -193,45 +193,49 @@ LS="#[fg=$TC,bg=$G07,bold] $user@#h #[fg=$TC,bg=$G06,nobold]${r_sep_icon}"
 
 
 
-ls_sep_2="#[fg=$G06,bg=$TC]${r_sep_icon}"
-ls_sep_3="#[fg=$TC,bg=$TC]${r_sep_icon}"
+# ls_sep_2="#[fg=$G06,bg=$TC]${r_sep_icon}"
+# ls_sep_3="#[fg=$TC,bg=$TC]${r_sep_icon}"
 
-color_for_segment_2="#[fg=$G04,bg=$TC]"
-color_for_segment_3="#[fg=$G05,bg=$TC]"
+# color_for_segment_2="#[fg=$G04,bg=$TC]"
+# color_for_segment_3="#[fg=$G05,bg=$TC]"
 
 # echo -e "dynamic_state: $dynamic_state" >> "$HOME/.tmux_power_debug"
 
 
 if [[ $dynamic_state == 0 ]]; then
     # session_name + current_target + lp status bar
-    LS="$LS#[fg=$TC,bg=$G06] $session_icon #S ${ls_sep_2}${color_for_segment_2}#{target_sel}${ls_sep_3}${color_for_segment_3}#{lpvpns_bar}"
+    LS="$LS $session_icon #S ${r_sep_icon} #{target_sel} ${r_sep_icon} #{lpvpns_bar}"
 
 elif [[ $dynamic_state == 1 ]]; then
     # session_name + current_target
-    LS="$LS#[fg=$TC,bg=$G06] $session_icon #S ${ls_sep_2}${color_for_segment_2}#{target_sel}"
+    LS="$LS $session_icon #S ${r_sep_icon} #{target_sel}"
 
 elif [[ $dynamic_state == 2 ]]; then
     # combined[session + target] + lp status bar
-    LS="$LS#[fg=$TC,bg=$G06]#{target_sel}${ls_sep_2}${color_for_segment_2}#{lpvpns_bar}"
+    LS="$LS #{target_sel} ${r_sep_icon} #{lpvpns_bar}"
 
 elif [[ $dynamic_state == 3 ]]; then
     # combined[session + target]
-    LS="$LS#[fg=$TC,bg=$G06]#{target_sel}"
+    LS="$LS #{target_sel}"
 
 elif [[ $dynamic_state == 4 ]]; then
     # session_name + lp status bar
-    LS="$LS#[fg=$TC,bg=$G06] $session_icon #S ${ls_sep_2}${color_for_segment_2}#{lpvpns_bar}"
+    LS="$LS $session_icon #S ${r_sep_icon} #{lpvpns_bar}"
+
+elif [[ $dynamic_state == 5 ]]; then
+    # session_name 
+    LS="$LS $session_icon #S"
 fi
 
+LS="$LS $r_sep_icon "
 
 
 
-
-# if "$show_upload_speed"; then
-#     LS="$LS#[fg=$G04,bg=$G03]$r_sep_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G03,bg=$BG]$r_sep_icon"
-# else
-    LS="$LS#[fg=$TC,bg=$G03]$r_sep_icon"
-# 
+# # if "$show_upload_speed"; then
+# #     LS="$LS#[fg=$G04,bg=$G03]$r_sep_icon#[fg=$TC,bg=$G03] $upload_speed_icon #{upload_speed} #[fg=$G03,bg=$BG]$r_sep_icon"
+# # else
+#     LS="$LS#[fg=$TC,bg=$G03]$r_sep_icon"
+# # 
 
 # if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
 #     LS="$LS#{prefix_highlight}"
@@ -249,22 +253,22 @@ tmux_set status-right-length 150
 
 
 if "$show_date"; then
-    RS=" $date_icon $date_format $l_sep_icon $RS"
+    RS=" $l_sep_icon $date_icon $date_format $RS"
 
 fi
 
 if "$show_time"; then
-    RS=" $time_icon $time_format $l_sep_icon $RS"
+    RS=" $l_sep_icon $time_icon $time_format $RS"
 
 fi
 
 
 if "$show_download_speed"; then
-    RS=" $download_speed_icon #{download_speed} $l_sep_icon $RS"
+    RS=" $l_sep_icon $download_speed_icon #{download_speed} $RS"
 fi
 
 if "$show_upload_speed"; then
-    RS=" $upload_speed_icon #{upload_speed} $l_sep_icon $RS"
+    RS=" $l_sep_icon $upload_speed_icon #{upload_speed} $RS"
 
 fi
 
