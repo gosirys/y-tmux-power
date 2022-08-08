@@ -189,7 +189,7 @@ fi
 
 
 
-LS="#[fg=$TC,bg=$BG,bold] $user@#h #[fg=$TC,bg=$BG,nobold]${r_sep_icon}"
+LS="#[fg=$BG,bg=$TC,bold] $user@#h #[fg=$TC,bg=$BG,nobold]$right_arrow_icon#[fg=$TC]#[bg=$BG]"
 
 
 
@@ -227,7 +227,7 @@ elif [[ $dynamic_state == 5 ]]; then
     LS="$LS $session_icon #S"
 fi
 
-LS="$LS $r_sep_icon "
+LS="$LS$r_sep_icon "
 
 
 
