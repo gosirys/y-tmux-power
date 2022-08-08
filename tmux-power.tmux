@@ -204,15 +204,15 @@ LS="#[fg=$TC,bg=$BG,bold] $user@#h #[fg=$TC,bg=$BG,nobold]${r_sep_icon}"
 
 if [[ $dynamic_state == 0 ]]; then
     # session_name + current_target + lp status bar
-    LS="$LS $session_icon #S ${r_sep_icon} #{target_sel} ${r_sep_icon} #{lpvpns_bar}"
+    LS="$LS $session_icon #S ${r_sep_icon} #{target_sel}${r_sep_icon}#{lpvpns_bar}"
 
 elif [[ $dynamic_state == 1 ]]; then
     # session_name + current_target
-    LS="$LS $session_icon #S ${r_sep_icon} #{target_sel}"
+    LS="$LS $session_icon #S ${r_sep_icon}#{target_sel}"
 
 elif [[ $dynamic_state == 2 ]]; then
     # combined[session + target] + lp status bar
-    LS="$LS #{target_sel} ${r_sep_icon} #{lpvpns_bar}"
+    LS="$LS #{target_sel}${r_sep_icon}#{lpvpns_bar}"
 
 elif [[ $dynamic_state == 3 ]]; then
     # combined[session + target]
@@ -220,7 +220,7 @@ elif [[ $dynamic_state == 3 ]]; then
 
 elif [[ $dynamic_state == 4 ]]; then
     # session_name + lp status bar
-    LS="$LS $session_icon #S ${r_sep_icon} #{lpvpns_bar}"
+    LS="$LS $session_icon #S ${r_sep_icon}#{lpvpns_bar}"
 
 elif [[ $dynamic_state == 5 ]]; then
     # session_name 
@@ -268,7 +268,7 @@ if "$show_download_speed"; then
 fi
 
 if "$show_upload_speed"; then
-    RS=" $l_sep_icon $upload_speed_icon #{upload_speed} $RS"
+    RS="$l_sep_icon $upload_speed_icon #{upload_speed} $RS"
 
 fi
 
@@ -316,7 +316,7 @@ tmux_set message-style "fg=$TC,bg=$BG"
 tmux_set message-command-style "fg=$TC,bg=$BG"
 
 # Copy mode highlight
-tmux_set mode-style "bg=$TC,fg=$FG"
+tmux_set mode-style "bg=$TC,fg=$G10"
 
 # set -g pane-active-border-style "bg=default,fg=#fefcfc"
 # set -g pane-border-style "fg=#afdab6"
