@@ -135,8 +135,8 @@ tmux_set @prefix_highlight_output_suffix "#[fg=$TC]#[bg=$BG]$right_arrow_icon"
 
 #     
 # Left side of status bar
-tmux_set status-left-bg "$G04"
-tmux_set status-left-fg "$G12"
+tmux_set status-left-bg "$BG"
+tmux_set status-left-fg "$FG"
 tmux_set status-left-length 150
 user=$(whoami)
 c_session=$(tmux display-message -p '#S')
@@ -189,7 +189,7 @@ fi
 
 
 
-LS="#[fg=$TC,bg=$G07,bold] $user@#h #[fg=$TC,bg=$G06,nobold]${r_sep_icon}"
+LS="#[fg=$TC,bg=$BG,bold] $user@#h #[fg=$TC,bg=$BG,nobold]${r_sep_icon}"
 
 
 
@@ -275,7 +275,7 @@ fi
 
 
 if [[ $prefix_highlight_pos == 'R' || $prefix_highlight_pos == 'LR' ]]; then
-    RS="#{prefix_highlight}$RS"
+    RS="#{prefix_highlight} $RS"
 fi
 tmux_set status-right "$RS"
 
