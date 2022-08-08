@@ -189,9 +189,9 @@ fi
 
 
 
-LS="#[fg=$BG,bg=$TC,bold] $user@#h #[fg=$TC,bg=$BG,nobold]$right_arrow_icon#[fg=$TC]#[bg=$BG]"
+#LS="#[fg=$BG,bg=$TC,bold] $user@#h #[fg=$TC,bg=$BG,nobold]$right_arrow_icon#[fg=$TC]#[bg=$BG]"
 
-
+#LS="#[fg=$BG,bg=$TC]"
 
 # ls_sep_2="#[fg=$G06,bg=$TC]${r_sep_icon}"
 # ls_sep_3="#[fg=$TC,bg=$TC]${r_sep_icon}"
@@ -208,11 +208,11 @@ if [[ $dynamic_state == 0 ]]; then
 
 elif [[ $dynamic_state == 1 ]]; then
     # session_name + current_target
-    LS="$LS $session_icon #S ${r_sep_icon}#{target_sel}"
+    LS="$LS $session_icon #S #[fg=$BG,bg=$TC]$right_arrow_icon#[fg=$TC]#[bg=$BG]#{target_sel}#[fg=$BG,bg=$TC]"
 
 elif [[ $dynamic_state == 2 ]]; then
     # combined[session + target] + lp status bar
-    LS="$LS #{target_sel}${r_sep_icon}#{lpvpns_bar}"
+    LS="$LS#[fg=$BG,bg=$TC] #{target_sel}$right_arrow_icon#[fg=$TC]#[bg=$BG]#{lpvpns_bar}"
 
 elif [[ $dynamic_state == 3 ]]; then
     # combined[session + target]
