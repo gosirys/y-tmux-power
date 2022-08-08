@@ -108,7 +108,7 @@ G13=#fefcfc
 
 
 FG=$(tmux_get '@tmx_pwr_fg' '#afdab6')
-BG=$(tmux_get '@tmx_pwr_bg' '#262626')
+BG=$(tmux_get '@tmx_pwr_bg' '#3a3a3a')
 #HG=$(tmux_get '@tmx_pwr_hg' 'colour3')
 #WR=$(tmux_get '@tmx_pwr_wr' 'colour3')
 
