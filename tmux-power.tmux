@@ -155,6 +155,8 @@ c_session=$(tmux display-message -p '#S')
 #     4: session_name + lp status bar
 
 #     5: nothing
+LS="#[fg=$BG,bg=$TC,bold] $user@#h #[fg=$TC,bg=$BG,nobold]$right_arrow_icon#[fg=$TC]#[bg=$BG]"
+
 
 if [[ "$show_hackon" ]]; then
 
@@ -189,30 +191,17 @@ fi
 
 
 
-LS="#[fg=$BG,bg=$TC,bold] $user@#h #[fg=$TC,bg=$BG,nobold]$right_arrow_icon#[fg=$TC]#[bg=$BG]"
-
-
-
-# ls_sep_2="#[fg=$G06,bg=$TC]${r_sep_icon}"
-# ls_sep_3="#[fg=$TC,bg=$TC]${r_sep_icon}"
-
-# color_for_segment_2="#[fg=$G04,bg=$TC]"
-# color_for_segment_3="#[fg=$G05,bg=$TC]"
-
-# echo -e "dynamic_state: $dynamic_state" >> "$HOME/.tmux_power_debug"
-
-
 if [[ $dynamic_state == 0 ]]; then
     # session_name + current_target + lp status bar
-    LS="$LS $session_icon #S ${r_sep_icon} #{target_sel}${r_sep_icon}#{lpvpns_bar}"
+    LS="$LS #{target_sel}#{lpvpns_bar}"
 
 elif [[ $dynamic_state == 1 ]]; then
     # session_name + current_target
-    LS="$LS $session_icon #S ${r_sep_icon}#{target_sel}"
+    LS="$LS #{target_sel}"
 
 elif [[ $dynamic_state == 2 ]]; then
     # combined[session + target] + lp status bar
-    LS="$LS #{target_sel}${r_sep_icon}#{lpvpns_bar}"
+    LS="$LS #{target_sel}#{lpvpns_bar}"
 
 elif [[ $dynamic_state == 3 ]]; then
     # combined[session + target]
