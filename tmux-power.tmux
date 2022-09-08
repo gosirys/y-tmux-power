@@ -209,7 +209,7 @@ elif [[ $dynamic_state == 3 ]]; then
 
 elif [[ $dynamic_state == 4 ]]; then
     # session_name + lp status bar
-    LS="$LS $session_icon #S ${r_sep_icon}#{lpvpns_bar}"
+    LS="$LS $session_icon #S ${r_sep_icon} #{lpvpns_bar}"
 
 elif [[ $dynamic_state == 5 ]]; then
     # session_name 
